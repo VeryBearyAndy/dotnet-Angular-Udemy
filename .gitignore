@@ -1,0 +1,3 @@
+./dotnet/API/bin/*
+./dotnet/API/obj/*
+.vscode/*
