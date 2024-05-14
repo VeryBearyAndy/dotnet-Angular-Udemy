@@ -1,3 +1,7 @@
 dotnet/API/bin/
 dotnet/API/obj/
+dotnet/Infrastructure/bin/
+dotnet/Infrastructure/obj/
+dotnet/Core/bin/
+dotnet/Core/obj/
 .vscode/
