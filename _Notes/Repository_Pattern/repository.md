@@ -12,7 +12,7 @@
     1 Make a repository Interface
 ```IProductRepository```
     
-    2 Derive a Concrete Class from the interface to be injected into Data access object
+    2 Derive a Concrete Class from the interface to be injected into another concrete class
 ```ProductRepository```
 
     3 Define any Data Accessor methods/Classes/Libraries in the derived Concrete class
