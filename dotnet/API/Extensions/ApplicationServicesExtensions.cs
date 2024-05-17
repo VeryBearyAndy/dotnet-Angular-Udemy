@@ -17,7 +17,6 @@ namespace API.Extensions
         {
             // Add services to the container.
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddDbContext<StoreContext>(opt =>{
