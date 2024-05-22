@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 
 dotnet/API/appsettings.json
 .vscode/
+
+dotnet/API/database.db-shm
+dotnet/API/database.db-wal
