@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+        <!--The section below is for the seach parameters-->
         <section class="col-3">
             
             <h5 class="text-warning ms-3">Sort</h5>
@@ -41,9 +42,12 @@
                 </div>
             </div>
 
+            <!-- This section below is the display containers for the products-->
             <div class="row row-cols-3 g-3">
                 <div class="col" *ngFor="let product of products">
-                    <app-product-item></app-product-item>
+                                <!-- the square brackets is the input property-->
+                                <!-- the parentheses is the iterated object above-->
+                    <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>
         </section>
