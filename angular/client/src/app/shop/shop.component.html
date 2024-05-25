@@ -58,6 +58,7 @@
                     [boundaryLinks]="true" 
                     [totalItems]="totalCount"
                     [itemsPerPage]="shopParams.pageSize"
+                    (pageChanged)="onPageChange($event)"
                     [maxSize]="10"
                     previousText="&lsaquo;" 
                     nextText="&rsaquo;" 
