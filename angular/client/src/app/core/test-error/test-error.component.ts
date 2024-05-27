@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./test-error.component.scss']
 })
 export class TestErrorComponent {
-
+  //baseUrl = 
 }
