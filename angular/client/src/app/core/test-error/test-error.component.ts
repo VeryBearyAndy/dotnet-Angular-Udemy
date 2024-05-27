@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/envrionment';
 
 @Component({
   selector: 'app-test-error',
@@ -6,5 +8,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./test-error.component.scss']
 })
 export class TestErrorComponent {
-  //baseUrl = 
+  baseUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient){}
+
+  get404Error(){
+    this.http.get(this.baseUrl + 'products/900').subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error),
+    })
+  }
+
+  get500Error(){
+    this.http.get(this.baseUrl + 'buggy/servererror').subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error),
+    })
+  }
+
+  get400Error(){
+    this.http.get(this.baseUrl + 'buggy/badrequest').subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error),
+    })
+  }
+
+  get400ValidationError(){
+    this.http.get(this.baseUrl + 'products/fourtytwo').subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error),
+    })
+  }
 }
