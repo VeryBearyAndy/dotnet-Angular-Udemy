@@ -27,7 +27,8 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
     RouterModule
   ],
   exports:[
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent
   ]
 })
 export class CoreModule { }
