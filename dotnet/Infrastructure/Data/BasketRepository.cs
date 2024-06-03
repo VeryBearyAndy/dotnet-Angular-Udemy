@@ -30,9 +30,14 @@ namespace Infrastructure.Data
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
-        public Task<CustomerBasket> UpdateBasketAsync(CustomerBasket baskets)
+        public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket baskets)
         {
-            throw new NotImplementedException();
+            var created = await _database.StringSetAsync(baskets.Id,
+                JsonSerializer.Serialize(baskets), TimeSpan.FromDays(30));
+
+            if(!created) return null;
+
+            return await GetBasketAsync(baskets.Id);
         }
     }
 }
