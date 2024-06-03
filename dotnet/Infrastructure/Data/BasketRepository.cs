@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
@@ -11,7 +12,7 @@ namespace Infrastructure.Data
     public class BasketRepository : IBasketRepository
     {
         private readonly IDatabase _database;
-        
+
         public BasketRepository(IConnectionMultiplexer redis)
         {
             _database = redis.GetDatabase();
@@ -22,9 +23,11 @@ namespace Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        public Task<CustomerBasket> GetBasketAsync(string BasketID)
+        public async Task<CustomerBasket> GetBasketAsync(string BasketID)
         {
-            throw new NotImplementedException();
+            var data = await _database.StringGetAsync(BasketID);
+            
+            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
         public Task<CustomerBasket> UpdateBasketAsync(CustomerBasket baskets)
