@@ -12,4 +12,8 @@ export interface BasketItem {
   brand: string
   type: string
 }
-  
+
+export class Basket implements Basket {
+    id = "adfasdf";
+    items: BasketItem[] = [];
+}
