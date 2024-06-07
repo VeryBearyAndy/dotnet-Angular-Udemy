@@ -39,4 +39,16 @@ export class BasketService {
 
   }
 
+  private mapProductItemToBasketItem(item : Product) : BasketItem {
+    return{
+      id: item.id,
+      productName: item.name,
+      price: item.price,
+      quanitity: 0,
+      pictureUrl: item.pictureUrl,
+      brand: item.productBrand,
+      type: item.productType
+    }
+  }
+
 }
