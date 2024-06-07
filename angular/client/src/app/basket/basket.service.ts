@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/envrionment';
-import { Basket } from '../shared/models/basket';
+import { Basket, BasketItem } from '../shared/models/basket';
 import { HttpClient } from '@angular/common/http';
+import { Product } from '../shared/models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,9 @@ export class BasketService {
   getCurrentBasketValue(){
     return this.basketSource.value;
   }
+
+  addItemToBasket(item: Product, qunatity = 1){
+
+  }
+
 }
