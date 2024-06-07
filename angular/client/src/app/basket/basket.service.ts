@@ -38,12 +38,21 @@ export class BasketService {
   addItemToBasket(item: Product, qunatity = 1){
     const itemToAdd = this.mapProductItemToBasketItem(item);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
-    basket.items = this.addOrUpdateItem(basket.items, item, qunatity);
+    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, qunatity);
   }
-  addOrUpdateItem(items: BasketItem[], item: Product, qunatity: number): BasketItem[] {
-    throw new Error('Method not implemented.');
+
+  private addOrUpdateItem(items: BasketItem[], itemToAdd: BasketItem, qunatity: number): BasketItem[] {
+    const item = items.find(x => x.id === itemToAdd.id);
+    if(item){
+      item.quanitity += qunatity;
+    } else {
+      itemToAdd.quanitity = qunatity;
+      items.push(itemToAdd);
+    }
+    return items;
   }
-  createBasket(): Basket{
+
+  private createBasket(): Basket{
     const basket = new Basket();
     localStorage.setItem('basket_id', basket.id);
     return basket;
