@@ -23,4 +23,11 @@ export class BasketService {
       next: basket => this.basketSource.next(basket)
     })
   }
+
+  setBasket(basket: Basket){
+    this.http.post<Basket>(this.baseUrl + 'basket', basket).subscribe({
+      next: basket => this.basketSource.next(basket)
+    })
+  }
+
 }
