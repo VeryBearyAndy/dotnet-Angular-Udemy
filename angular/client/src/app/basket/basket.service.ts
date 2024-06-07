@@ -38,6 +38,10 @@ export class BasketService {
   addItemToBasket(item: Product, qunatity = 1){
     const itemToAdd = this.mapProductItemToBasketItem(item);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
+    basket.items = this.addOrUpdateItem(basket.items, item, qunatity);
+  }
+  addOrUpdateItem(items: BasketItem[], item: Product, qunatity: number): BasketItem[] {
+    throw new Error('Method not implemented.');
   }
   createBasket(): Basket{
     const basket = new Basket();
