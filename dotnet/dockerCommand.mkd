@@ -1,0 +1,3 @@
+<p2>in the dotnet directory run the command</p2>
+
+```docker-compose up --detatch```
