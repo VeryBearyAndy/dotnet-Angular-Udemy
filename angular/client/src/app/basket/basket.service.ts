@@ -30,4 +30,7 @@ export class BasketService {
     })
   }
 
+  getCurrentBasketValue(){
+    return this.basketSource.value;
+  }
 }
