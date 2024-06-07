@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/envrionment';
+import { Basket } from '../shared/models/basket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
-
+  baseUrl = environment.apiUrl;
+  
+  // the below two lines establish a behavior subject and create an observable for it
+  // this allows multiple subscribers to view a piece of data and respond and react to its
+  // changes, this is a land mark concept that should be remembered
+  private basketSource = new BehaviorSubject<Basket | null>(null);
+  basketSource$ = this.basketSource.asObservable();
   constructor() { }
 }
