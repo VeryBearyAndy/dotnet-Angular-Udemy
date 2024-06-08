@@ -65,6 +65,11 @@ export class BasketService {
     }
 
   }
+  
+  deleteBasket(basket: Basket) {
+    throw new Error('Method not implemented.');
+  }
+
   private addOrUpdateItem(items: BasketItem[], itemToAdd: BasketItem, qunatity: number): BasketItem[] {
     const item = items.find(x => x.id === itemToAdd.id);
     if(item){
