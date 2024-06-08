@@ -58,8 +58,10 @@ export class BasketService {
     if (item) {
       item.quanitity -= quanitity;
       if(item.quanitity === 0){
-        basket.items = basket.items.filter(x =>  x.id !== id)
+        basket.items = basket.items.filter(x =>  x.id !== id);
       }
+      if(basket.items.length > 0) this.setBasket(basket);
+      else this.deleteBasket(basket);
     }
 
   }
