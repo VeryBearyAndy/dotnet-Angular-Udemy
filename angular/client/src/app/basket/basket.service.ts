@@ -65,9 +65,15 @@ export class BasketService {
     }
 
   }
-  
+
   deleteBasket(basket: Basket) {
-    throw new Error('Method not implemented.');
+    return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe({
+      next: () =>{
+        this.basketSource.next(null);
+        this.basketTotalSource.next(null);
+        localStorage.removeItem(basket.id);
+      }
+    })
   }
 
   private addOrUpdateItem(items: BasketItem[], itemToAdd: BasketItem, qunatity: number): BasketItem[] {
