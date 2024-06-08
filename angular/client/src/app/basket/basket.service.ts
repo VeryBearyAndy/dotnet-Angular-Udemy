@@ -4,6 +4,7 @@ import { environment } from 'src/environments/envrionment';
 import { Basket, BasketItem, BasketTotals } from '../shared/models/basket';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/models/product';
+import { UntypedFormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +44,10 @@ export class BasketService {
     return this.basketSource.value;
   }
 
-  addItemToBasket(item: Product, qunatity = 1){
-    const itemToAdd = this.mapProductItemToBasketItem(item);
+  addItemToBasket(item: Product | BasketItem, qunatity = 1){
+    if(this.isProduct(item)) item = this.mapProductItemToBasketItem(item);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
-    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, qunatity);
+    basket.items = this.addOrUpdateItem(basket.items, item, qunatity);
     this.setBasket(basket);
   }
 
@@ -88,4 +89,7 @@ export class BasketService {
     this.basketTotalSource.next({shipping, total, subtotal})
   }
 
+  private isProduct(item: Product | BasketItem): item is Product{
+    return (item as Product).productBrand !== undefined;
+  }
 }
