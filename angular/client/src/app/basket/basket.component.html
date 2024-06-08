@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead class="bg-light text-uppercase">
+                        <thead class="text-uppercase">
                             <tr>
                                 <th><div class="py-2">Products</div></th>
                                 <th><div class="py-2">Price</div></th>
@@ -57,6 +57,16 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <app-order-totals></app-order-totals>
+                    <div class="d-grid">
+                        <a routerLink="/checkout" class="btn btn-outline-primary py-2">
+                            Proceed to Checkout
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
