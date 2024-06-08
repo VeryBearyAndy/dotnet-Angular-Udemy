@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/envrionment';
-import { Basket, BasketItem } from '../shared/models/basket';
+import { Basket, BasketItem, BasketTotals } from '../shared/models/basket';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/models/product';
 
@@ -16,6 +16,8 @@ export class BasketService {
   // changes, this is a land mark concept that should be remembered
   private basketSource = new BehaviorSubject<Basket | null>(null);
   basketSource$ = this.basketSource.asObservable();
+  private basketTotalSource = new BehaviorSubject<BasketTotals | null>(null);
+  basketTotalSource$ = this.basketTotalSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
