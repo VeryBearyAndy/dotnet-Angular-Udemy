@@ -50,7 +50,19 @@ export class BasketService {
     basket.items = this.addOrUpdateItem(basket.items, item, qunatity);
     this.setBasket(basket);
   }
+  
+  removeItemFromBasket(id: number, quanitity = 1){
+    const basket = this.getCurrentBasketValue();
+    if(!basket) return;
+    const item = basket.items.find(x => x.id === id);
+    if (item) {
+      item.quanitity -= quanitity;
+      if(item.quanitity === 0){
+        basket.items = basket.items.filter(x =>  x.id !== id)
+      }
+    }
 
+  }
   private addOrUpdateItem(items: BasketItem[], itemToAdd: BasketItem, qunatity: number): BasketItem[] {
     const item = items.find(x => x.id === itemToAdd.id);
     if(item){
