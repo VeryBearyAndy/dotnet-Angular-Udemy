@@ -23,6 +23,8 @@ namespace API.Extensions
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
+            services.AddAuthentication();
+            services.AddAuthorization();
             
 
             return services;
